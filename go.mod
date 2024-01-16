@@ -1,20 +1,19 @@
-module github.com/hashicorp/terraform-config-inspect
+module github.com/rquadling/terraform-config-inspect
 
 require (
-	github.com/go-test/deep v1.0.3
-	github.com/google/go-cmp v0.3.0
-	github.com/hashicorp/hcl v0.0.0-20170504190234-a4b07c25de5f
-	github.com/hashicorp/hcl/v2 v2.0.0
-	github.com/spf13/pflag v1.0.3
-	github.com/zclconf/go-cty v1.1.0
+	github.com/go-test/deep v1.1.0
+	github.com/google/go-cmp v0.6.0
+	github.com/hashicorp/hcl v1.0.0
+	github.com/hashicorp/hcl/v2 v2.19.1
+	github.com/spf13/pflag v1.0.5
+	github.com/zclconf/go-cty v1.14.1
 )
 
 require (
-	github.com/agext/levenshtein v1.2.2 // indirect
-	github.com/apparentlymart/go-textseg v1.0.0 // indirect
-	github.com/kylelemons/godebug v1.1.0 // indirect
-	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
-	golang.org/x/text v0.3.8 // indirect
+	github.com/agext/levenshtein v1.2.1 // indirect
+	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
+	github.com/mitchellh/go-wordwrap v0.0.0-20150314170334-ad45545899c7 // indirect
+	golang.org/x/text v0.11.0 // indirect
 )
 
-go 1.18
+go 1.21.6
