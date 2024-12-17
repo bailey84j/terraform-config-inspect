@@ -206,7 +206,14 @@ func LoadModuleFromFile(file *hcl.File, mod *Module) hcl.Diagnostics {
 						var errorMessage string
 						valDiags := gohcl.DecodeExpression(attr.Expr, nil, &errorMessage)
 						diags = append(diags, valDiags...)
-						v.Validation = append(v.Validation, errorMessage)
+						v.ValidationError = append(v.ValidationError, errorMessage)
+					}
+
+					if attr, defined := content.Attributes["condition"]; defined {
+						var errorMessage string
+						valDiags := gohcl.DecodeExpression(attr.Expr, nil, &errorMessage)
+						diags = append(diags, valDiags...)
+						v.ValidationRule = append(v.ValidationRule, errorMessage)
 					}
 				}
 			}
