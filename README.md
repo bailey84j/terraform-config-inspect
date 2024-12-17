@@ -37,11 +37,11 @@ If anyone wants to make subsequent pull requests, or raise issues, then please d
 
 
 ```
-$ go install github.com/rquadling/terraform-config-inspect@latest
+$ go install github.com/bailey84j/terraform-config-inspect@latest
 ```
 
 ```go
-import "github.com/rquadling/terraform-config-inspect/tfconfig"
+import "github.com/bailey84j/terraform-config-inspect/tfconfig"
 
 // ...
 

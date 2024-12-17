@@ -1,4 +1,4 @@
-module github.com/rquadling/terraform-config-inspect
+module github.com/bailey84j/terraform-config-inspect
 
 require (
 	github.com/go-test/deep v1.1.0
