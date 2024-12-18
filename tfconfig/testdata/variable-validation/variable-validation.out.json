@@ -16,9 +16,10 @@
       "name": "variable_with_one_validation",
       "type": "string",
       "description": "This variable has one validation",
-      "validation": [
-        "var.variable_with_one_validation must be empty or 10 characters long."
-      ],
+      "validation": [{
+        "errorMessage": "var.variable_with_one_validation must be empty or 10 characters long.",
+        "condition": "(length(var.variable_with_one_validation) == 0 || length(var.variable_with_one_validation) == 10)"
+      }],
       "default": "",
       "required": false,
       "pos": {
@@ -30,9 +31,14 @@
       "name": "variable_with_two_validations",
       "type": "string",
       "description": "This variable has two validations",
-      "validation": [
-        "var.variable_with_two_validations must be 10 characters long.",
-        "var.variable_with_two_validations must start with 'magic'."
+      "validation": [{
+        "errorMessage": "var.variable_with_two_validations must be 10 characters long.",
+        "condition": "(length(var.variable_with_two_validations) == 10)"
+      },
+        {
+          "condition": "(startswith(var.variable_with_two_validations, \"magic\"))",
+          "errorMessage": "var.variable_with_two_validations must start with 'magic'."
+        }
       ],
       "default": null,
       "required": true,

@@ -201,13 +201,29 @@ func LoadModuleFromFile(file *hcl.File, mod *Module) hcl.Diagnostics {
 				case "validation":
 					content, _, contentDiags := block.Body.PartialContent(validationSchema)
 					diags = append(diags, contentDiags...)
-
+					var errorMessage string
 					if attr, defined := content.Attributes["error_message"]; defined {
-						var errorMessage string
+
 						valDiags := gohcl.DecodeExpression(attr.Expr, nil, &errorMessage)
 						diags = append(diags, valDiags...)
-						v.Validation = append(v.Validation, errorMessage)
+						//v.Validation = append(v.Validation, errorMessage)
 					}
+					var conditionExpr string
+					if attr, defined := content.Attributes["condition"]; defined {
+
+						var conditionExprAsStr string
+						valDiags := gohcl.DecodeExpression(attr.Expr, nil, &conditionExprAsStr)
+						if !valDiags.HasErrors() {
+							conditionExpr = conditionExprAsStr
+						} else {
+							rng := attr.Expr.Range()
+							conditionExpr = string(rng.SliceBytes(file.Bytes))
+						}
+
+						//v.ValidationCondition = append(v.ValidationCondition, conditionExpr)
+					}
+					v.Validation = append(v.Validation, Validation{errorMessage, conditionExpr})
+
 				}
 			}
 

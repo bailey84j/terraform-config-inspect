@@ -65,7 +65,10 @@ Backend: {{ .Backend.Type }}{{end}}
 {{- if .Description}}: {{ .Description }}{{- end}}
 {{- if .Validation}}  
   Validation error messages  {{- range .Validation}}
-  * {{ tt . }}
+  * {{ tt .ErrorMessage }}
+{{- end}}
+  Validation conditions  {{- range .Validation}}
+  * {{ tt .Condition }}
 {{- end}}{{end}}
 {{- end}}{{end}}
 
