@@ -7,7 +7,6 @@ import (
 	"bytes"
 	"github.com/google/go-cmp/cmp"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"testing"
 )
@@ -47,8 +46,6 @@ func TestRenderMarkdown(t *testing.T) {
 			}
 
 			if diff := cmp.Diff(buf.String(), string(expected)); len(diff) > 0 {
-				os.WriteFile("./new.md", buf.Bytes(), 0644)
-				os.WriteFile("./expected.md", expected, 0644)
 				t.Errorf("got:\n%s\nwant:\n%s\ndiff:\n%s", buf.String(), expected, diff)
 			}
 		})
