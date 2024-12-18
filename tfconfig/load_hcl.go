@@ -122,8 +122,9 @@ func LoadModuleFromFile(file *hcl.File, mod *Module) hcl.Diagnostics {
 
 			name := block.Labels[0]
 			v := &Variable{
-				Name: name,
-				Pos:  sourcePosHCL(block.DefRange),
+				Name:       name,
+				Pos:        sourcePosHCL(block.DefRange),
+				Validation: []Validation{},
 			}
 
 			mod.Variables[name] = v
